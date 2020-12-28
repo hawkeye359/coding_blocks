@@ -4,14 +4,14 @@ using namespace std;
 
 
 bool compare(int a, int b){
-	return a>b;
+	return a<b;
 }
 
-void bubble_sort(int a[], int n){
+void bubble_sort(int a[], int n, bool (&cmp)(int a,int b)){
 
 	for(int i=0; i<n; i++){
 		for(int k=1; k<=n-i; k++){
-			if(compare(a[k],a[k-1])){
+			if(cmp(a[k],a[k-1])){
 				swap(a[k],a[k-1]);
 			}
 		}
@@ -29,5 +29,5 @@ int main(){
 	for(int i=0; i<n; i++){
 		cin>>a[i];
 	}
-	bubble_sort(a,n);
+	bubble_sort(a,n,compare);
 }
